@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+  box-sizing: border-box;
+}
+@font-size:14px;
+@background-white: #fff;
+@color-white: #fff;
+@content-height:500px;
+@content-width: 768px;
+@border-radius: 10px;
+@w-gif: 300px;
+@h-gif: 300px;
+
+.forms-content {
+  flex-direction: column;
+  padding: 0 50px;
+}
+
+.container {
+  width: @content-width;
+  max-width: 100%;
+  min-height:@content-height;
+  background: @background-white;
+  border-radius: @border-radius;
+  overflow: hidden;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+  0 14px 28px rgba(0, 0, 0, 0.22);
+}
+
+.login-card {
+  transition: all 0.6s ease-in-out;
+  z-index: 2;
+  left: 0;
+}
+
+.register-card {
+  transition: all 0.6s ease-in-out;
+  opacity: 0;
+  z-index: 1;
+  left: 0;
+}
+
+.input-trans {
+  height: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.form__input {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #d5d5d5;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  outline: none;
+  background: none;
+}
+
+.form__label {
+  position: absolute;
+  top: .65rem;
+  left: .4rem;
+  color: #a8a8a8;
+  padding: 0 0.5rem;
+  background-color: white;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+}
+
+.form__input:focus,
+.form__input:not(:placeholder-shown).form__input:not(:focus) {
+  border: 1px solid #08abab;
+}
+
+.form__input:focus ~ .form__label,
+.form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+  top: -0.5rem;
+  left: 0.8rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  color: #08abab;
+}
+
+.overlay-container {
+  transition: all 0.6s ease-in-out;
+  left: 50%;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.overlay-cards{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay {
+  position: relative;
+  color: @color-white;
+  background: #0c7e78;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  background: linear-gradient(to right, #2e5d65, rgb(10, 109, 133));
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+  .overlay-cards;
+  transform: translateX(-20%);
+}
+
+.overlay-right{
+  .overlay-cards;
+  //background-image: url("../../../assets/img/login-overlay.jpg");
+  transform: translateX(0);
+  right: 0;
+}
+
+button {
+  color: @color-white;
+  background: #0C7E78;
+  font-size: @font-size - 2;
+  font-weight: bold;
+  padding: 12px 55px;
+  border-radius: @border-radius * 2;
+  border: 1px solid #0C7E78;
+  outline: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.90);
+}
+
+p {
+  font-size: @font-size;
+  font-weight: 100;
+  letter-spacing: 0.5px;
+  margin: 10px 0;
+}
+/*-----Animation-------*/
+.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.container.right-panel-active .login-card {
+  transform: translateX(100%);
+}
+
+.container.right-panel-active .register-card  {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+
+.container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
